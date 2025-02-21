@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>INST377-Week-4-Lab</title>
+    </head>
+    <body>
+        <h1 id="heading">INST377 - Week 4</h1>
+
+        <!-- CSS code -->
+        <style>
+            body {
+                background-color: lightblue;
+            }
+            .box{
+                background-color: purple;
+                color: white;
+                border: 2px solid white;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                margin-top: 30px;
+                margin-right:50px;
+                border-radius: 15px;
+                width: 45%;
+                text-align: center;
+                display:inline-block;
+            }
+        </style>
+
+        <!-- Name Box -->
+        <div class="box">
+            <form onsubmit="return alertme()">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                <input type="submit" value="Alert me!">
+            </form>
+        </div>
+
+        <!-- Change Color Box -->
+        <div class="box">
+            <button onclick="changeColor()">Change Color</button>
+        </div>
+
+        <!-- Add Text Box -->
+        <div class="box">
+            <button id="addText" onclick="addText()">Add Text</button>
+        </div>
+
+        <!-- Text Tester -->
+        <div class="box">
+            <form onsubmit="return formValidation()">
+                <label for="validateText">Text tester:</label>
+                <input type="text" id="validateText" required>
+                <input type="submit" value="Validate Text">
+            </form>
+        </div>
+
+        <!-- Javascript Code -->
+        <script type="text/javascript">
+            function changeColor() {
+                console.log('Attempting to change color of background, current color is:', document.body.style.backgroundColor)
+            
+                    if (document.body.style.backgroundColor == 'lightblue') {
+                        document.body.style.backgroundColor = 'red';
+                    } else {
+                        document.body.style.backgroundColor = 'lightblue';
+                    }
+                    console.log('Successfully changed color of text, current color is:', document.body.style.backgroundColor)
+                    return false;
+            }
+
+            function addText() {
+                console.log('Attempting to add text to h1, current h1 is:', document.getElementById("heading").value)
+                document.getElementById("heading").innerHTML += " - Adding text"
+                return false;
+            }
+            function alertme() {
+                console.log('Return the name', document.getElementById("name").value)
+                alert('Hi ' + document.getElementById("name").value + '!')
+                return false;
+            }
+            function formValidation() {
+                console.log('Validating user input:', document.getElementById("validateText").value)
+                var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                if(validation.test(document.getElementById("validateText").value)) {
+                    document.body.style.backgroundColor = 'orange';
+                    alert('How about ..... nah:(')
+                    return false; 
+                }
+                }
+        </script>
+    </body>
+</html>
